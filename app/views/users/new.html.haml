@@ -1,0 +1,19 @@
+- @page = { title: 'Sign Up', 'navbar-title': 'Sign Up' }
+.container
+  .row{ class: 'justify-content-center mt-2' }
+    %div{ id: 'clearance', class: 'sign-up col-xs-12 col-md-8' }
+      .card
+        .card-body
+          = form_for @user do |form|
+            .form-group
+              = form.label :email
+              %br
+              = form.text_field :email, type: 'email', class: 'form-control'
+            .form-group
+              = form.label :password
+              %br
+              = form.password_field :password, class: 'form-control'
+            = form.submit class: 'btn btn-primary'
+            .other-links
+              %br
+              = link_to t(".sign_in"), sign_in_path

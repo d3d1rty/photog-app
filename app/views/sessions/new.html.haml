@@ -1,0 +1,22 @@
+- @page = { title: 'Sign In', 'navbar-title': 'Sign In' }
+.container
+  .row{ class: 'justify-content-center mt-2' }
+    %div{ id: 'clearance', class: 'sign-in col-xs-12 col-md-8' }
+      .card
+        .card-body
+          = form_for :session, url: session_path do |form|
+            .form-group
+              = form.label :email
+              %br
+              = form.text_field :email, type: 'email', class: 'form-control'
+            .form-group
+              = form.label :password
+              %br
+              = form.password_field :password, class: 'form-control'
+            = form.submit class: 'btn btn-primary'
+            .other-links
+              %br
+              - if Clearance.configuration.allow_sign_up?
+                = link_to t(".sign_up"), sign_up_path
+                %br
+              = link_to t(".forgot_password"), new_password_path

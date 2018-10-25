@@ -10,16 +10,17 @@
   %body
     %nav.navbar.navbar-expand-lg.navbar-light.bg-light
       %a.navbar-brand{ href: '#' } Navbar
-      %button.navbar-toggler{ type: 'button', 'data-toggle': 'collapse', 'data-target': '#navbarNavDrowdown', 'aria-controls': 'navbarNavDropdown', 'aria-expanded': false, 'aria-label': 'Toggle Navigation' }
+      %button.navbar-toggler{ type: 'button', 'data-toggle': 'collapse', 'data-target': '#navbarNavDropdown', 'aria-controls': 'navbarNavDropdown', 'aria-expanded': false, 'aria-label': 'Toggle Navigation' }
         %span.navbar-toggler-icon
       .collapse.navbar-collapse#navbarNavDropdown
-        %ul.navbar-nav
-          %li.nav-item
-            %a.nav-link{ href: '#' } Home
-          %li.nav-item
-            %a.nav-link{ href: '#' } Test
-          %li.nav-item
-            %a.nav-link{ href: '#' } Test
-          %li.nav-item
-            %a.nav-link{ href: '#' } Test
+        .container
+          %ul.navbar-nav.justify-content-center
+            %li.nav-item
+              %a.nav-link.text-center{ href: '#' } Home
+            %li.nav-item
+              %a.nav-link.text-center{ href: '#' } Test
+            %li.nav-item
+              %a.nav-link.text-center{ href: '#' } Test
+            %li.nav-item
+              %a.nav-link.text-center{ href: '#' } Test
     = yield

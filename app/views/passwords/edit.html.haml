@@ -1,0 +1,15 @@
+- @page = { title: 'Change Password', subtitle: '' }
+.container
+  .row
+    %div{ id: 'clearance', class: 'sign-in col-xs-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3' }
+      .card
+        .card-block
+          %div{ id: 'clearance', class: 'password-reset' }
+            = form_for :password_reset,
+                  url: user_password_path(@user, token: @user.confirmation_token),
+                  html: { method: :put } do |form|
+              .form-group
+                = form.label :password
+                %br
+                = form.password_field :password, class: 'form-control'
+              = form.submit class: 'btn btn-primary'
