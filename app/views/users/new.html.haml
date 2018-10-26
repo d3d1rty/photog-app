@@ -1,19 +1,39 @@
 - @page = { title: 'Sign Up', 'navbar-title': 'Sign Up' }
+= render 'layouts/errors', object: @user
 .container
   .row{ class: 'justify-content-center mt-2' }
     %div{ id: 'clearance', class: 'sign-up col-xs-12 col-md-8' }
       .card
         .card-body
           = form_for @user do |form|
-            .form-group
-              = form.label :email
-              %br
-              = form.text_field :email, type: 'email', class: 'form-control'
-            .form-group
-              = form.label :password
-              %br
-              = form.password_field :password, class: 'form-control'
+            .form-group.row
+              = form.label :first_name, class: 'col-sm-3 col-form-label'
+              .col-sm-9
+                = form.text_field :first_name, class: 'form-control'
+            .form-group.row
+              = form.label :last_name, class: 'col-sm-3 col-form-label'
+              .col-sm-9
+                = form.text_field :last_name, class: 'form-control'
+            .form-group.row
+              = form.label :email, class: 'col-sm-3 col-form-label'
+              .col-sm-9
+                = form.text_field :email, type: 'email', class: 'form-control'
+            .form-group.row
+              = form.label :password, class: 'col-sm-3 col-form-label'
+              .col-sm-9
+                = form.password_field :password, class: 'form-control'
+            .form-group.row
+              = form.label :business_name, class: 'col-sm-3 col-form-label'
+              .col-sm-9
+                = form.text_field :business_name, class: 'form-control'
+                %small.form-text.text-muted Full legal business name (include LLC, Co, Inc, etc.)
+            .form-group.row
+              = form.label :brand, class: 'col-sm-3 col-form-label'
+              .col-sm-9
+                = form.text_field :brand, class: 'form-control'
+                %small.form-text.text-muted Doing Business As (DBA) name or alternative brand name.
             = form.submit class: 'btn btn-primary'
-            .other-links
-              %br
-              = link_to t(".sign_in"), sign_in_path
+        .card-footer
+          %p.card-text.text-muted
+            Already have an account?
+            =link_to t(".sign_in"), sign_in_path
