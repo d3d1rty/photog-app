@@ -1,7 +1,7 @@
 ##
 # = UsersController
 # Author::    Richard Davis
-# Copyright:: Copyright 2018-2019 Mushaka Solutions
+# Copyright:: Copyright 2018-2019 Mushaka Solutions Inc.
 # License::   GNU Public License 3
 #
 # This controller provides methods for accessing user resources.
@@ -39,6 +39,7 @@ class UsersController < Clearance::UsersController
       if @user.save
         sign_in @user
         flash[:message] = 'Account creation successful.'
+        flash[:type] = 'success'
         format.html { redirect_to url_after_create }
         format.json { render :show, status: :created, location: @user }
       else
@@ -56,6 +57,7 @@ class UsersController < Clearance::UsersController
     respond_to do |format|
       if @user.update(user_params)
         flash[:message] = 'User information was successfully updated.'
+        flash[:type] = 'success'
         format.html { redirect_to @user }
         format.json { render :show, status: :ok, location: @user }
       else

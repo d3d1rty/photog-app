@@ -1,12 +1,12 @@
-- @page = { title: 'Reset Password', subtitle: '' }
 .container
-  .row
-    %div{ id: 'clearance', class: 'password-reset col-xs-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3' }
+  .row.justify-content-center.mt-2
+    #clearance.password-reset.col-xs-12.col-md-8
       .card
-        .card-block
+        .card-body
           = form_for :password, url: passwords_path do |form|
-            .form-group
-              = form.label :email
-              %br
-              = form.text_field :email, type: 'email', class: 'form-control'
-            = form.submit class: 'btn btn-primary'
+            .form-group.row
+              = form.label :email, class: 'form-row col-sm-3'
+              .col-sm-9
+                = form.text_field :email, type: 'email', class: 'form-control form-label'
+            .text-center
+              = form.submit class: 'btn btn-primary'

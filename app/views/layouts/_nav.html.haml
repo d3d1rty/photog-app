@@ -5,11 +5,13 @@
   .collapse.navbar-collapse#navbarNavDropdown
     .container
       %ul.navbar-nav.justify-content-center
-        %li.nav-item
-          %a.nav-link.text-center{ href: '#' } Home
-        %li.nav-item
-          %a.nav-link.text-center{ href: '#' } Test
-        %li.nav-item
-          %a.nav-link.text-center{ href: '#' } Test
-        %li.nav-item
-          %a.nav-link.text-center{ href: '#' } Test
+        - if signed_in?
+          %li.nav-item
+            = link_to 'Dashboard', dashboard_path, class: 'nav-link text-center'
+          %li.nav-item
+            = link_to 'Sign Out', sign_out_path, method: :delete, class: 'nav-link text-center'
+        - else
+          %li.nav-item
+            = link_to 'Home', root_path, class: 'nav-link text-center'
+          %li.nav-item
+            = link_to 'Sign In', sign_in_path, class: 'nav-link text-center'
