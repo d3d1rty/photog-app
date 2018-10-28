@@ -8,5 +8,6 @@
 #
 # Package group and package resources share a nested, one-to-many relationship.
 class PackageGroup < ApplicationRecord
+  has_many :packages
   validates :name, presence: true, length: { maximum: 75 }
 end

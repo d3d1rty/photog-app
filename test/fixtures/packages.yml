@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  duration: 1
+  retainer_fee: 9.99
+  total_cost: 9.99
+  description: MyText
+  package_groups: one
+
+two:
+  name: MyString
+  duration: 1
+  retainer_fee: 9.99
+  total_cost: 9.99
+  description: MyText
+  package_groups: two

@@ -20,6 +20,10 @@
         %p.lead
           - if pg.description != ''
             = pg.description
+        .text-center
+          = button_to new_package_group_package_path(pg), class: 'btn btn-primary btn-lg', method: 'get' do
+            %i{ class: 'fa fa-plus-circle' }
+            \Create Package
 - else
   .row.justify-content-center
     .col-md-6
