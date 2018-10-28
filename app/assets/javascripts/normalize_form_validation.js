@@ -3,7 +3,7 @@
 function normalizeFormValidation() {
   let fields_with_errors = document.querySelectorAll('.field_with_errors');
   fields_with_errors.forEach(function(field){
-    if (field.lastChild.localName == 'input'){
+    if (field.lastChild.localName == 'input' || field.lastChild.localName == 'textarea'){
       field.lastChild.classList.add('is-invalid');
     } else {
       field.lastChild.classList.add('text-danger');
