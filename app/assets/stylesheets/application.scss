@@ -1,1 +1,52 @@
 @import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+.icon-link {
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.icon-panel-portfolio {
+  position: absolute;
+  height: 0;
+  top: .2em;
+  right: 42%;
+}
+
+.icon-panel-showcase {
+  position: absolute;
+  height: 0;
+  top: .2em;
+  right: 45%;
+}
+
+.icon-delete {
+  color: map-get($theme_colors, danger);
+
+  &:hover {
+    color: darken(map-get($theme_colors, danger), 10%);
+  }
+}
+
+.icon-edit {
+  color: map-get($theme_colors, warning);
+
+  &:hover {
+    color: darken(map-get($theme_colors, warning), 10%);
+  }
+}
+
+.icon-view {
+  color: map-get($theme_colors, info);
+
+  &:hover {
+    color: darken(map-get($theme_colors, info), 10%);
+  }
+}
+
+

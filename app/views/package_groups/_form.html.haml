@@ -1,0 +1,11 @@
+= form_for @package_group do |f|
+  .form-group.row
+    = f.label :name, class: 'col-sm-3 col-form-label'
+    .col-sm-9
+      = f.text_field :name, class: 'form-control', placeholder: 'e.g. Weddings'
+  .form-group.row
+    = f.label :description, class: 'col-sm-3 col-form-label'
+    .col-sm-9
+      = f.text_area :description, class: 'form-control', placeholder: 'e.g. Capture one of your most important life moments. From first look to flower toss, your big day is covered. Choose the package that provides the coverage that you need.'
+  .text-center
+    = f.submit 'Save', id: 'package-group-submit', class: 'btn btn-lg btn-primary'
