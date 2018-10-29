@@ -37,6 +37,9 @@ Rails.application.routes.draw do
   # Application route for dashboard
   get 'dashboard', to: 'dashboard#show', as: :dashboard
 
+  # Application route for dashboard
+  get 'pricing', to: 'public#pricing', as: :pricing
+
   # Application routes for package groups
   resources :package_groups, only: %i[index new create edit update destroy] do
     # Application routes for packages

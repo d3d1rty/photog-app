@@ -10,7 +10,7 @@
 class PackagesController < ApplicationController
   before_action :require_login
   before_action :set_package, only: %i[show edit update destroy]
-  before_action :set_package_group, only: %i[create new edit update]
+  before_action :set_package_group, only: %i[show create new edit update]
 
   ##
   # GET /package_groups/:package_group_id/packages/:package_id
@@ -37,8 +37,8 @@ class PackagesController < ApplicationController
       if @package.save
         flash[:type] = 'success'
         flash[:message] = 'Package was successfully created.'
-        format.html { redirect_to package_path(@package) }
-        format.json { render :show, status: :created, location: package_path(@package) }
+        format.html { redirect_to package_group_package_path(@package_group, @package) }
+        format.json { render :show, status: :created, location: package_group_package_path(@package_group, @package) }
       else
         @errors = @package.errors.full_messages
         format.html { render :new }
@@ -54,9 +54,10 @@ class PackagesController < ApplicationController
   def update
     respond_to do |format|
       if @package.update(package_params)
+        flash[:type] = 'success'
         flash[:message] = 'Package was successfully updated.'
-        format.html { redirect_to package_path(@package) }
-        format.json { render :show, status: :ok, location: package_path(@package) }
+        format.html { redirect_to package_group_package_path(@package_group, @package) }
+        format.json { render :show, status: :ok, location: package_group_package_path(@package_group, @package) }
       else
         @errors = @package.errors.full_messages
         format.html { render :edit }
@@ -95,6 +96,6 @@ class PackagesController < ApplicationController
   ##
   # Never trust parameters from the scary internet, only allow the white list through.
   def package_params
-    params.require(:package).permit(:name, :description, :cost, :retainer_fee, :duration, :package_group_id)
+    params.require(:package).permit(:name, :description, :total_cost, :retainer_fee, :duration, :package_group_id)
   end
 end

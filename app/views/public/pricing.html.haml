@@ -1,0 +1,66 @@
+- if @package_groups.count > 0
+  - @package_groups.each do |pg|
+    .jumbotron.jumbotron-fluid
+      .container
+        .text-center
+          %h1= pg.name
+          %p.lead
+            - if pg.description != ''
+              = pg.description
+    .container
+      .row.justify-content-center.my-4
+        - if pg.packages.count > 1
+          .card-group
+            - pg.packages.order(total_cost: :asc).each do |package|
+              .card
+                .card-body
+                  .text-center
+                    %h3.card-title= package.name
+                  <hr>
+                  .text-center
+                    %p.text-muted= package.description
+                  %p.card-text
+                    %span.text-muted Duration:
+                    = package.duration
+                    %span.text-muted mins
+                  %p.card-text
+                    %span.text-muted Total cost:
+                    = number_to_currency(package.total_cost, unit: '$')
+                  %p.card-text
+                    %span.text-muted Retainer fee:
+                    = number_to_currency(package.retainer_fee, unit: '$')
+        - elsif pg.packages.count == 1
+          - pg.packages.order(total_cost: :asc).each do |package|
+            .col-md-6
+              .card.mb-4
+                .card-body
+                  .text-center
+                    %h3.card-title= package.name
+                  <hr>
+                  .text-center
+                    %p.text-muted= package.description
+                  %p.card-text
+                    %span.text-muted Duration:
+                    = package.duration
+                    %span.text-muted mins
+                  %p.card-text
+                    %span.text-muted Total cost:
+                    = number_to_currency(package.total_cost, unit: '$')
+                  %p.card-text
+                    %span.text-muted Retainer fee:
+                    = number_to_currency(package.retainer_fee, unit: '$')
+        - else
+          .col-md-6
+            .card.mb-4
+              .card-body
+                .text-center
+                  %h3.card-title Pricing for this group has not been published by the business yet.
+                  %p.card-text Check back later; this page is under construction.
+- else
+  .row.justify-content-center
+    .col-md-6
+      .card
+        .card-body
+          .text-center
+            %h3.card-title Pricing has not been published by the business yet.
+            %p.card-text Check back later; this page is under construction.

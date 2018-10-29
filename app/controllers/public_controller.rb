@@ -7,5 +7,13 @@
 # This controller provides methods for accessing the public facing views as well as
 # any associated actions.
 class PublicController < ApplicationController
+  ##
+  # /
   def index; end
+
+  ##
+  # /pricing
+  def pricing
+    @package_groups = PackageGroup.all
+  end
 end

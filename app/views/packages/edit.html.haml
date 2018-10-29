@@ -1,2 +1,12 @@
-%h1 Packages#edit
-%p Find me in app/views/packages/edit.html.haml
+= render 'layouts/errors', object: @package
+.container
+  .row.justify-content-center
+    .col-md-8
+      .card.mt-2
+        .card-body
+          .text-left
+            .btn-group
+              = button_to 'Package Index', package_groups_path, method: 'get', class: 'btn btn-outline-primary btn-lg'
+              = button_to 'Read Only', package_group_package_path(@package_group, @package), method: 'get', class: 'btn btn-primary btn-lg'
+          %hr
+          = render 'form'

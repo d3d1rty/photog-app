@@ -1,0 +1,27 @@
+= form_for [@package_group, @package] do |f|
+  .form-group.row
+    = f.label :name, class: 'col-sm-3 col-form-label'
+    .col-sm-9
+      = f.text_field :name, class: 'form-control', placeholder: 'e.g. Unforgettable Wedding'
+  .form-group.row
+    = f.label :description, class: 'col-sm-3 col-form-label'
+    .col-sm-9
+      = f.text_area :description, class: 'form-control', placeholder: 'e.g. Includes full-event coverage, generous product options, and...'
+  .form-group.row
+    = f.label :total_cost, class: 'col-sm-3 col-form-label'
+    .col-sm-9
+      = f.number_field :total_cost, class: 'form-control', value: number_to_currency(f.object.total_cost.to_f, delimiter: '', unit: ''), step: 0.01
+      %small{ id: 'durationHelp', class: 'form-text text-muted' } The total cost of the package including retainer fee.
+  .form-group.row
+    = f.label :retainer_fee, class: 'col-sm-3 col-form-label'
+    .col-sm-9
+      = f.number_field :retainer_fee, class: 'form-control', value: number_to_currency(f.object.retainer_fee.to_f, delimiter: '', unit: ''), step: 0.01
+      %small{ id: 'durationHelp', class: 'form-text text-muted' } The amount due at time of booking.
+  .form-group.row
+    = f.label :duration, class: 'col-sm-3 col-form-label'
+    .col-sm-9
+      = f.text_field :duration, class: 'form-control', placeholder: 'e.g. 90'
+      %small{ id: 'durationHelp', class: 'form-text text-muted' } How many minutes of coverage does this package offer?
+  .actions
+    .text-center
+      = f.submit 'Save', id: 'package-submit', class: 'btn btn-lg btn-primary'

@@ -1,2 +1,28 @@
-%h1 Packages#show
-%p Find me in app/views/packages/show.html.haml
+.container
+  .row.justify-content-center
+    .col-md-8
+      .card.mt-2
+        .card-body
+          .text-left
+            .btn-group
+              = button_to 'Package Index', package_groups_path, method: 'get', class: 'btn btn-outline-primary btn-lg'
+              = button_to 'Edit Package', edit_package_group_package_path(@package_group, @package), method: 'get', class: 'btn btn-primary btn-lg'
+          %hr
+          .text-center
+            %h4.card-title= @package.name
+          %p.card-text
+            %span.text-muted Description:
+            = @package.description
+          %p.card-text
+            %span.text-muted Package Group:
+            = @package.package_group.name
+          %p.card-text
+            %span.text-muted Total cost:
+            = number_to_currency(@package.total_cost, unit: '$')
+          %p.card-text
+            %span.text-muted Retainer fee:
+            = number_to_currency(@package.retainer_fee, unit: '$')
+          %p.card-text
+            %span.text-muted Duration:
+            = @package.duration
+            %span.text-muted mins

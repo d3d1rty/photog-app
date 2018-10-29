@@ -1,2 +1,11 @@
-%h1 Packages#new
-%p Find me in app/views/packages/new.html.haml
+= render 'layouts/errors', object: @package
+.container
+  .row.justify-content-center
+    .col-md-8
+      .card.mt-2
+        .card-body
+          .text-left
+            .btn-group
+              = button_to 'Package Index', package_groups_path, method: 'get', class: 'btn btn-outline-primary btn-lg'
+          %hr
+          = render 'form'
