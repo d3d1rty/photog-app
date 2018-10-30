@@ -1,0 +1,35 @@
+/* ---- grid ---- */
+.grid:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* ---- .grid-item ---- */
+
+.grid-sizer,
+.grid-item {
+  width: 100%;
+  @include media-breakpoint-up(sm) {
+    width: 100%;
+  }
+  @include media-breakpoint-up(md) {
+    width: 49%;
+  }
+  @include media-breakpoint-up(lg) {
+    width: 32.5%;
+  }
+  @include media-breakpoint-up(xl) {
+    width: 32.5%;
+  }
+}
+
+.grid-item {
+  float: left;
+  margin-bottom: 10px;
+}
+
+.grid-item img {
+  display: block;
+  max-width: 100%;
+}

@@ -6,12 +6,6 @@
 #
 # Routes for the application
 Rails.application.routes.draw do
-  get 'packages/show'
-  get 'packages/new'
-  get 'packages/edit'
-  get 'packages/create'
-  get 'packages/update'
-  get 'packages/destroy'
   # Clearance routes to constrains signed in users to the dashboard
   constraints Clearance::Constraints::SignedIn.new do
     root to: 'dashboard#show', as: :signed_in_root
@@ -36,6 +30,9 @@ Rails.application.routes.draw do
 
   # Application route for dashboard
   get 'dashboard', to: 'dashboard#show', as: :dashboard
+
+  # Application routes for clients
+  resources :clients, only: %i[index show new create edit update destroy]
 
   # Application route for dashboard
   get 'pricing', to: 'public#pricing', as: :pricing

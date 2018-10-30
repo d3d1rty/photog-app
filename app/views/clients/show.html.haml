@@ -1,0 +1,18 @@
+.container
+  .row.justify-content-center
+    .col-md-8
+      .card.mt-4
+        .card-body
+          .text-left
+            .btn-group
+              = button_to 'Client Index', clients_path, method: 'get', class: 'btn btn-outline-primary btn-lg'
+              = button_to 'Edit Client',edit_client_path(@client), method: 'get', class: 'btn btn-primary btn-lg'
+          %hr
+          .text-center
+            %h4.card-title= "#{@client.first_name} #{@client.last_name}"
+          %p.card-text
+            %span.text-muted Email:
+            = @client.email
+          %p.card-text
+            %span.text-muted Phone:
+            = @client.phone_number
