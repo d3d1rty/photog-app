@@ -10,10 +10,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_30_031551) do
+ActiveRecord::Schema.define(version: 2018_10_31_015731) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "booking_packages", force: :cascade do |t|
+    t.string "name"
+    t.integer "duration"
+    t.decimal "retainer_fee"
+    t.decimal "total_cost"
+    t.bigint "booking_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["booking_id"], name: "index_booking_packages_on_booking_id"
+  end
+
+  create_table "booking_requests", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "phone_number"
+    t.datetime "requested_date"
+    t.bigint "package_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["package_id"], name: "index_booking_requests_on_package_id"
+  end
+
+  create_table "bookings", force: :cascade do |t|
+    t.string "name"
+    t.datetime "start_time"
+    t.bigint "client_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_bookings_on_client_id"
+  end
 
   create_table "clients", force: :cascade do |t|
     t.string "first_name"
@@ -60,5 +92,8 @@ ActiveRecord::Schema.define(version: 2018_10_30_031551) do
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end
 
+  add_foreign_key "booking_packages", "bookings"
+  add_foreign_key "booking_requests", "packages"
+  add_foreign_key "bookings", "clients"
   add_foreign_key "packages", "package_groups"
 end
