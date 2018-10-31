@@ -6,6 +6,17 @@
 #
 # Routes for the application
 Rails.application.routes.draw do
+  get 'booking_requests/new'
+  get 'booking_requests/show'
+  get 'booking_requests/edit'
+  get 'booking_requests/create'
+  get 'booking_requests/update'
+  get 'booking_requests/destroy'
+  get 'booking_request/new'
+  get 'booking_request/show'
+  get 'booking_request/create'
+  get 'booking_request/update'
+  get 'booking_request/destroy'
   # Clearance routes to constrains signed in users to the dashboard
   constraints Clearance::Constraints::SignedIn.new do
     root to: 'dashboard#show', as: :signed_in_root
@@ -42,6 +53,9 @@ Rails.application.routes.draw do
     # Application routes for packages
     resources :packages, only: %i[new create show edit update destroy]
   end
+
+  # Application routes for booking requests
+  resources :booking_requests, only: %i[new show create edit update destroy]
 
   # The root application route
   root 'public#index'

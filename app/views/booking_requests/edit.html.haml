@@ -1,0 +1,13 @@
+= render 'layouts/errors', object: @booking_request
+.container
+  .row.justify-content-center
+    .col-md-8
+      .card.mt-4
+        .card-body
+          - if signed_in?
+            .text-left
+              .btn-group
+                = button_to 'Dashboard', dashboard_path, method: 'get', class: 'btn btn-outline-primary btn-lg'
+                = button_to 'Read Only', booking_request_path(@booking_request), method: 'get', class: 'btn btn-primary btn-lg'
+            %hr
+          = render 'form'

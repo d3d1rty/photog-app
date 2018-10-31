@@ -1,0 +1,36 @@
+.container
+  .row.justify-content-center
+    .col-md-8
+      .card.mt-4
+        .card-body
+          .text-left
+            .btn-group
+              - if signed_in?
+                = button_to 'Dashboard', dashboard_path, method: 'get', class: 'btn btn-outline-primary btn-lg'
+                = button_to 'Edit Booking Request',edit_booking_request_path(@booking_request), method: 'get', class: 'btn btn-primary btn-lg'
+          %hr
+          .text-center
+            %h4.card-title= "#{@booking_request.first_name} #{@booking_request.last_name}"
+          %p.card-text
+            %span.text-muted Email:
+            = @booking_request.email
+          %p.card-text
+            %span.text-muted Phone:
+            = @booking_request.phone_number
+          %p.card-text
+            %span.text-muted Requested date:
+            = @booking_request.requested_date.to_formatted_s(:long_ordinal)
+          %hr
+          %p.card-text
+            %span.text-muted Package name:
+            = @booking_request.package.name
+          %p.card-text
+            %span.text-muted Duration
+            = @booking_request.package.duration
+            %span.text-muted mins
+          %p.card-text
+            %span.text-muted Retainer fee:
+            = number_to_currency(@booking_request.package.retainer_fee, unit: '$')
+          %p.card-text
+            %span.text-muted Total cost:
+            = number_to_currency(@booking_request.package.total_cost, unit: '$')
